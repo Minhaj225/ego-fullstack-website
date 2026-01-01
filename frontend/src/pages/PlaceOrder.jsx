@@ -37,37 +37,37 @@ const PlaceOrder = () => {
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
-  const initPay = (order) => {
-    const options = {
-      key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-      amount: order.amount,
-      currency: order.currency,
-      name: "Order Payment",
-      description: "Order Payment",
-      order_id: order.id,
-      receipt: order.receipt,
-      handler: async (response) => {
-        console.log(response);
-        try {
-          const { data } = await axios.post(
-            backendUrl + "/api/order/verifyRazorpay",
-            response,
-            { headers: token }
-          );
-          if (data.success) {
-            navigate("/orders");
-            setCartItems({});
-          }
-        } catch (error) {
-          console.log(error);
-          toast.error(error);
-        }
-      },
-    };
+  // const initPay = (order) => {
+  //   const options = {
+  //     key: import.meta.env.VITE_RAZORPAY_KEY_ID,
+  //     amount: order.amount,
+  //     currency: order.currency,
+  //     name: "Order Payment",
+  //     description: "Order Payment",
+  //     order_id: order.id,
+  //     receipt: order.receipt,
+  //     handler: async (response) => {
+  //       console.log(response);
+  //       try {
+  //         const { data } = await axios.post(
+  //           backendUrl + "/api/order/verifyRazorpay",
+  //           response,
+  //           { headers: token }
+  //         );
+  //         if (data.success) {
+  //           navigate("/orders");
+  //           setCartItems({});
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //         toast.error(error);
+  //       }
+  //     },
+  //   };
 
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  };
+  //   const rzp = new window.Razorpay(options);
+  //   rzp.open();
+  // };
 
   const onSubmitHandler = async (event) => {
     event.preventDefault();
@@ -125,17 +125,17 @@ const PlaceOrder = () => {
           }
           break;
 
-        case "razorpay":
-          const responseRazorpay = await axios.post(
-            backendUrl + "/api/order/razorpay",
-            orderData,
-            { headers: { token } }
-          );
-          if (responseRazorpay.data.success) {
-            initPay(responseRazorpay.data.order);
-          }
+        // case "razorpay":
+        //   const responseRazorpay = await axios.post(
+        //     backendUrl + "/api/order/razorpay",
+        //     orderData,
+        //     { headers: { token } }
+        //   );
+        //   if (responseRazorpay.data.success) {
+        //     initPay(responseRazorpay.data.order);
+        //   }
 
-          break;
+        //   break;
 
         default:
           break;
@@ -265,7 +265,7 @@ const PlaceOrder = () => {
               ></p>
               <img className="h-5 mx-4" src={assets.stripe_logo} alt="" />
             </div>
-            <div
+            {/* <div
               onClick={() => setMethod("razorpay")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
             >
@@ -275,7 +275,7 @@ const PlaceOrder = () => {
                 }`}
               ></p>
               <img className="h-5 mx-4" src={assets.razorpay_logo} alt="" />
-            </div>
+            </div> */}
             <div
               onClick={() => setMethod("cod")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
