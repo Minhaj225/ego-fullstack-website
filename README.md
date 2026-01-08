@@ -1,25 +1,135 @@
-Full-Stack E-Commerce Platform & Admin Dashboard
-Summary: Engineered a scalable, full-stack e-commerce solution using the MERN (MongoDB, Express.js, React, Node.js) stack,
-featuring a responsive storefront and a dedicated admin management panel. Implemented secure authentication, real-time inventory management,
-and seamless payment processing to deliver a production-grade user experience.
+# Full Stack MERN E-Commerce Platform
 
-Key Technical Achievements (FAANG-Style Bullet Points):
+A robust and scalable e-commerce application built with the MERN stack (MongoDB, Express.js, React, Node.js). This project features a modern storefront for customers and a dedicated admin dashboard for managing products and orders, integrated with secure payment gateways.
 
-Modern Frontend Architecture: Built a high-performance Single Page Application (SPA) using React 19 and Vite, utilizing Tailwind CSS for a responsive, mobile-first design system that enhances user engagement.
+## 🚀 Features
 
-Secure API & Authentication: Developed robust RESTful APIs with Node.js and Express, implementing JWT (JSON Web Tokens) for stateless authentication and Bcrypt for secure password hashing.
+### User Features
+- **Browse & Filter Products**: Advanced filtering by category, sub-category, and price.
+- **Product Details**: View detailed product information, images, and available sizes.
+- **Shopping Cart**: Add items to cart, update quantities, and view total cost.
+- **Secure Checkout**: Integrated payment gateways (Stripe & Razorpay) for secure transactions.
+- **Order History**: Track order status and view past purchases.
+- **User Authentication**: Secure login and registration using JWT.
 
-Payment & Order Logic: Integrated Stripe and Razorpay gateways to handle secure transactions, while architecting a resilient order management system with tracking capabilities (Order Placed, Shipped, etc.).
+### Admin Features
+- **Dashboard**: Overview of application status.
+- **Product Management**: Add, edit, and delete products. Support for image uploads via Cloudinary.
+- **Order Management**: View customer orders and update shipping statuses (Order Placed, Shipped, Delivered).
+- **Inventory Control**: Manage stock and product variants.
 
-State & Asset Management: Orchestrated complex application state for shopping carts and product filtering while leveraging Cloudinary for optimized, scalable image storage and delivery.
+## 🛠️ Tech Stack
 
-Database Design: Designed a normalized MongoDB schema with Mongoose to efficiently handle relational data including product categories, sub-categories, variants (sizes), and user order history.
+**Frontend (Store & Admin):**
+- React 19
+- Vite
+- Tailwind CSS
+- React Router DOM
+- Context API (State Management)
 
-Admin Dashboard: Created a protected, role-based admin interface for full CRUD operations on products and orders, enabling real-time business oversight and "Bestseller" promotion management.
+**Backend:**
+- Node.js
+- Express.js
+- Mongoose (ODM)
+- JSON Web Token (JWT)
+- Bcrypt (Security)
 
-Tech Stack:
+**Integrations:**
+- **Database**: MongoDB Atlas
+- **Storage**: Cloudinary (Image management)
+- **Payments**: Stripe, Razorpay
 
-Frontend: React 19, Vite, Tailwind CSS, React Router, Context API
-Backend: Node.js, Express.js, JWT, REST API
-Database: MongoDB, Mongoose
-Tools & Services: Stripe, Razorpay, Cloudinary, Vercel/Render (Deployment assumed based on vercel.json)
+## 📂 Project Structure
+
+```
+├── admin/          # Admin Dashboard (React + Vite)
+├── backend/        # API Server (Node/Express)
+└── frontend/       # Customer Storefront (React + Vite)
+```
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- MongoDB Connection URI
+- Cloudinary Account
+- Stripe/Razorpay Account keys
+
+### 1. Backend Setup
+
+Navigate to the backend directory and install dependencies:
+
+```bash
+cd backend
+npm install
+```
+
+Create a `.env` file in the `backend` directory with the following variables:
+
+```env
+PORT=4000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_SECRET_KEY=your_cloudinary_secret_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=securepassword
+```
+
+Start the server:
+
+```bash
+npm start
+# or for development
+npm run server
+```
+
+### 2. Frontend Setup
+
+Navigate to the frontend directory:
+
+```bash
+cd frontend
+npm install
+```
+
+Create a `.env` file in the `frontend` directory if required (e.g., for API base URL):
+
+```env
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+Start the frontend application:
+
+```bash
+npm run dev
+```
+
+### 3. Admin Panel Setup
+
+Navigate to the admin directory:
+
+```bash
+cd admin
+npm install
+```
+
+Create a `.env` file in the `admin` directory:
+
+```env
+VITE_BACKEND_URL=http://localhost:4000
+```
+
+Start the admin dashboard:
+
+```bash
+npm run dev
+```
+
+## 🛡️ License
+
+This project is licensed under the ISC License.
